@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\MatchCase;
+use Rikthepixel\ModelTyper\Actions\MatchCase;
 use Tests\TestCase;
 
 class MatchCaseTest extends TestCase

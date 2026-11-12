@@ -5,8 +5,8 @@ namespace Tests\Feature\Actions;
 use App\Models\Complex;
 use App\Models\ComplexRelationship;
 use App\Models\User;
-use FumeApp\ModelTyper\Actions\BuildModelDetails;
-use FumeApp\ModelTyper\Actions\GetModels;
+use Rikthepixel\ModelTyper\Actions\BuildModelDetails;
+use Rikthepixel\ModelTyper\Actions\GetModels;
 use Tests\TestCase;
 
 class BuildModelDetailsTest extends TestCase

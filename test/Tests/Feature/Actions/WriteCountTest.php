@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\WriteCount;
+use Rikthepixel\ModelTyper\Actions\WriteCount;
 use Tests\TestCase;
 
 class WriteCountTest extends TestCase

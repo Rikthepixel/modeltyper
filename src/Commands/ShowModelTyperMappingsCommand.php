@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Commands;
+namespace Rikthepixel\ModelTyper\Commands;
 
-use FumeApp\ModelTyper\Actions\GetMappings;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 use Symfony\Component\Console\Attribute\AsCommand;

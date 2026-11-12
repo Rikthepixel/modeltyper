@@ -20,7 +20,7 @@ In order to support php 8.4, this library requires nesbot/carbon >= 3.5
 We have introduced new configuration options, to ensure your configuration file includes these new options, delete your current `config/modeltyper.php` file, then publish the new config file using the following command.
 
 ```bash
-php artisan vendor:publish --provider="FumeApp\ModelTyper\ModelTyperServiceProvider" --tag=config
+php artisan vendor:publish --provider="Rikthepixel\ModelTyper\ModelTyperServiceProvider" --tag=config
 ```
 
 ### Removed `all` Option from `model:typer` command
@@ -41,7 +41,7 @@ ModelTyper now only considers models that extends `Eloquent\Model`
 ### Remove Deprecated clases
 ######  Likelihood Of Impact: Very Low
 
-`FumeApp\ModelTyper\ModelInterface` and `FumeApp\ModelTyper\TypescriptInterface` where removed and are no longer available.
+`Rikthepixel\ModelTyper\ModelInterface` and `FumeApp\ModelTyper\TypescriptInterface` where removed and are no longer available.
 
 
 

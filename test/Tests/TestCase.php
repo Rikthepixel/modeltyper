@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use FumeApp\ModelTyper\ModelTyperServiceProvider;
+use Rikthepixel\ModelTyper\ModelTyperServiceProvider;
 use Illuminate\Config\Repository;
 
 use function Orchestra\Testbench\package_path;

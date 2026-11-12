@@ -1,6 +1,6 @@
 <?php
 
-namespace FumeApp\ModelTyper\Constants;
+namespace Rikthepixel\ModelTyper\Constants;
 
 /**
  * @see https://laravel.com/docs/10.x/eloquent-mutators#attribute-casting
@@ -11,7 +11,7 @@ class TypescriptMappings
      * @var array<string, string>
      */
     public static array $mappings = [
-        'array' => 'Array<unknown>',
+        'array' => 'unknown[]',
         'bigint' => 'number',
         'bool' => 'boolean',
         'boolean' => 'boolean',

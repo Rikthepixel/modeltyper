@@ -57,7 +57,7 @@ composer require --dev fumeapp/modeltyper
 Optionally, you can publish the config file using the following command:
 
 ```bash
-php artisan vendor:publish --provider="FumeApp\ModelTyper\ModelTyperServiceProvider" --tag=config
+php artisan vendor:publish --provider="Rikthepixel\ModelTyper\ModelTyperServiceProvider" --tag=config
 ```
 
 ## Usage

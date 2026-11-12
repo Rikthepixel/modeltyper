@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\WriteFillable;
+use Rikthepixel\ModelTyper\Actions\WriteFillable;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionClass;
 use Tests\TestCase;

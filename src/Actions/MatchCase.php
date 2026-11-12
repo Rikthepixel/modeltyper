@@ -1,6 +1,6 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
 use Illuminate\Support\Str;
 

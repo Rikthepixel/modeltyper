@@ -1,18 +1,14 @@
 {
-    "name": "fumeapp/modeltyper",
+    "name": "rikthepixel/modeltyper",
     "description": "Generate TypeScript interfaces from Laravel Models",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "kevin olson",
-            "email": "acidjazz@gmail.com"
+            "name": "rik den breejen"
         }
     ],
-    "contributors": [
-        "kevin olson <acidjazz@gmail.com>",
-        "tanner Campbell <tcamp022@gmail.com>"
-    ],
+    "contributors": [],
     "require": {
         "php": "^8.2",
         "composer/class-map-generator": "^1.6",
@@ -35,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "FumeApp\\ModelTyper\\": "src/"
+            "Rikthepixel\\ModelTyper\\": "src/"
         }
     },
     "autoload-dev": {
@@ -49,7 +45,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FumeApp\\ModelTyper\\ModelTyperServiceProvider"
+                "Rikthepixel\\ModelTyper\\ModelTyperServiceProvider"
             ]
         }
     },

@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
-use FumeApp\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;

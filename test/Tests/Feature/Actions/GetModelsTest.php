@@ -4,8 +4,8 @@ namespace Tests\Feature\Actions;
 
 use App\Models\User;
 use App\Modules\Models\Team;
-use FumeApp\ModelTyper\Actions\GetModels;
-use FumeApp\ModelTyper\Exceptions\ModelTyperException;
+use Rikthepixel\ModelTyper\Actions\GetModels;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Tests\TestCase;
 
 class GetModelsTest extends TestCase
@@ -64,8 +64,8 @@ class GetModelsTest extends TestCase
         $this->assertStringContainsString('HiddenRelation.php', $foundModels[2]);
         $this->assertStringContainsString('MorphRelation.php', $foundModels[3]);
         $this->assertStringContainsString('Multiple.php', $foundModels[4]);
-        $this->assertStringContainsString('Pivot.php', $foundModels[4]);
-        $this->assertStringContainsString('Team.php', $foundModels[5]);
+        $this->assertStringContainsString('Pivot.php', $foundModels[5]);
+        $this->assertStringContainsString('Team.php', $foundModels[6]);
     }
 
     public function test_action_can_find_all_models_in_project_when_in_included_models()

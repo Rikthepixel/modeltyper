@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\GetMappings;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
 use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
-use FumeApp\ModelTyper\Constants\TypescriptMappings;
+use Rikthepixel\ModelTyper\Constants\TypescriptMappings;
 use Illuminate\Support\Facades\Config;
 
 class GetMappings

@@ -4,7 +4,7 @@ namespace Tests\Feature\Actions;
 
 use App\Models\User;
 use Exception;
-use FumeApp\ModelTyper\Actions\DetermineAccessorType;
+use Rikthepixel\ModelTyper\Actions\DetermineAccessorType;
 use ReflectionClass;
 use ReflectionMethod;
 use Tests\TestCase;

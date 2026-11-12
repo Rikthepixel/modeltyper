@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
-use FumeApp\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 use Illuminate\Support\Facades\Config;
 
 class WriteExist

@@ -5,8 +5,8 @@ namespace Tests\Feature\Actions;
 use App\Models\AbstractModel;
 use App\Models\User;
 use App\Modules\Models\Team;
-use FumeApp\ModelTyper\Actions\Generator;
-use FumeApp\ModelTyper\Exceptions\ModelTyperException;
+use Rikthepixel\ModelTyper\Actions\Generator;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 

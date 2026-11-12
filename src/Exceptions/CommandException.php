@@ -1,6 +1,6 @@
 <?php
 
-namespace FumeApp\ModelTyper\Exceptions;
+namespace Rikthepixel\ModelTyper\Exceptions;
 
 /**
  * An exception that should be thrown when internal command execution failed.

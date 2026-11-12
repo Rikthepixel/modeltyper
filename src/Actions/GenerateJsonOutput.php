@@ -1,11 +1,11 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
 use const JSON_PRETTY_PRINT;
 
-use FumeApp\ModelTyper\Traits\ClassBaseName;
-use FumeApp\ModelTyper\Traits\ModelRefClass;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ModelRefClass;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use ReflectionClass;
@@ -114,7 +114,7 @@ class GenerateJsonOutput
                 return [
                     $relation['type'] => [
                         'name' => $relation['name'],
-                        'type' => 'export type ' . $relation['type'] . ' = ' . 'Array<' . $name . '>',
+                        'type' => 'export type ' . $relation['type'] . ' = ' . $name . '[]',
                     ],
                 ];
             })->toArray();

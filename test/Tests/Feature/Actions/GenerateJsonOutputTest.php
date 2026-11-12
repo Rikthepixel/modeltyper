@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\GenerateJsonOutput;
-use FumeApp\ModelTyper\Actions\GetMappings;
-use FumeApp\ModelTyper\Actions\GetModels;
+use Rikthepixel\ModelTyper\Actions\GenerateJsonOutput;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
+use Rikthepixel\ModelTyper\Actions\GetModels;
 use Tests\TestCase;
 
 class GenerateJsonOutputTest extends TestCase

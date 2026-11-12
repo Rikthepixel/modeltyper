@@ -4,7 +4,7 @@ namespace Tests\Feature\Actions;
 
 use App\Models\AbstractModel;
 use App\Models\User;
-use FumeApp\ModelTyper\Actions\RunModelInspector;
+use Rikthepixel\ModelTyper\Actions\RunModelInspector;
 use Tests\TestCase;
 
 class RunModelInspectorTest extends TestCase

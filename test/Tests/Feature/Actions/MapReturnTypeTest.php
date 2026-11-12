@@ -3,8 +3,8 @@
 namespace Tests\Feature\Actions;
 
 use ErrorException;
-use FumeApp\ModelTyper\Actions\GetMappings;
-use FumeApp\ModelTyper\Actions\MapReturnType;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
+use Rikthepixel\ModelTyper\Actions\MapReturnType;
 use Tests\TestCase;
 
 class MapReturnTypeTest extends TestCase

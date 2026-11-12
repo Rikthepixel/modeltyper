@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\WriteSum;
+use Rikthepixel\ModelTyper\Actions\WriteSum;
 use Tests\TestCase;
 
 class WriteSumTest extends TestCase

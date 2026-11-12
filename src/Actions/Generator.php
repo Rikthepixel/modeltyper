@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
-use FumeApp\ModelTyper\Exceptions\ModelTyperException;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use ReflectionException;

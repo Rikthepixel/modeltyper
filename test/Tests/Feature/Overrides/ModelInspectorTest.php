@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Overrides;
 
-use FumeApp\ModelTyper\Overrides\ModelInspector;
+use Rikthepixel\ModelTyper\Overrides\ModelInspector;
 use Illuminate\Support\Facades\Config;
 use ReflectionClass;
 use Tests\TestCase;

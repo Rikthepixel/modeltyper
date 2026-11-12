@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\GenerateCliOutput;
-use FumeApp\ModelTyper\Actions\GetMappings;
-use FumeApp\ModelTyper\Actions\GetModels;
+use Rikthepixel\ModelTyper\Actions\GenerateCliOutput;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
+use Rikthepixel\ModelTyper\Actions\GetModels;
 use Tests\TestCase;
 
 class GenerateCliOutputTest extends TestCase

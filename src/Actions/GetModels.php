@@ -1,9 +1,9 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
 use Composer\ClassMapGenerator\ClassMapGenerator;
-use FumeApp\ModelTyper\Exceptions\ModelTyperException;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;

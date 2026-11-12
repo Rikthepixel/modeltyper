@@ -1,6 +1,6 @@
 <?php
 
-namespace FumeApp\ModelTyper\Traits;
+namespace Rikthepixel\ModelTyper\Traits;
 
 use Illuminate\Support\Str;
 

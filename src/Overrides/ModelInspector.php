@@ -1,6 +1,6 @@
 <?php
 
-namespace FumeApp\ModelTyper\Overrides;
+namespace Rikthepixel\ModelTyper\Overrides;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Model;

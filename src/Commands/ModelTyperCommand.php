@@ -1,9 +1,9 @@
 <?php
 
-namespace FumeApp\ModelTyper\Commands;
+namespace Rikthepixel\ModelTyper\Commands;
 
-use FumeApp\ModelTyper\Actions\Generator;
-use FumeApp\ModelTyper\Exceptions\ModelTyperException;
+use Rikthepixel\ModelTyper\Actions\Generator;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
@@ -49,7 +49,7 @@ class ModelTyperCommand extends Command
                             {--api-resources : Output api.MetApi interfaces}
                             {--fillables : Output model fillables}
                             {--fillable-suffix= : Appends to fillables}
-                            {--additional-paths : Additional paths to search for models} 
+                            {--additional-paths : Additional paths to search for models}
                             {--ignore-config : Ignore options set in config}';
 
     /**

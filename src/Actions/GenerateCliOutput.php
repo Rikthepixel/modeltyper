@@ -1,13 +1,13 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
-use FumeApp\ModelTyper\Traits\ClassBaseName;
-use FumeApp\ModelTyper\Traits\ModelRefClass;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use ReflectionClass;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ModelRefClass;
 use SplFileInfo;
 
 class GenerateCliOutput
@@ -83,30 +83,42 @@ class GenerateCliOutput
             $openBrace = $useTypes ? ' = {' : ' {';
             $entry .= "{$this->indent}export {$declarationType} {$name}{$openBrace}" . PHP_EOL;
 
+            $hiddenAttributes = $noHidden ? $reflectionModel->newInstanceWithoutConstructor()->getHidden() : [];
+
+            $check_hidden = fn ($name) => $noHidden ? array_search($name, $hiddenAttributes) !== false : false;
+            $check_overridden = fn ($name) => $interfaces->has($name);
+
+            $should_omit = fn($name) => $check_hidden($name) || $check_overridden($name);
+
             if ($columns->isNotEmpty()) {
                 $entry .= "{$this->indent}  // columns" . PHP_EOL;
-                $columns->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings, $useEnums) {
-                    [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables, useEnums: $useEnums);
-                    if (! empty($line)) {
-                        $entry .= $line;
-                        if ($enum) {
-                            $this->enumReflectors[] = $enum;
+                $columns
+                    ->filter(fn ($att) => ! $check_overridden($att['name']))
+                    ->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings, $useEnums) {
+                        [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables, useEnums: $useEnums);
+
+                        if (! empty($line)) {
+                            $entry .= $line;
+                            if ($enum) {
+                                $this->enumReflectors[] = $enum;
+                            }
                         }
-                    }
-                });
+                    });
             }
 
             if ($nonColumns->isNotEmpty()) {
                 $entry .= "{$this->indent}  // mutators" . PHP_EOL;
-                $nonColumns->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings, $useEnums) {
-                    [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables, useEnums: $useEnums);
-                    if (! empty($line)) {
-                        $entry .= $line;
-                        if ($enum) {
-                            $this->enumReflectors[] = $enum;
+                $nonColumns
+                    ->filter(fn ($att) => ! $check_overridden($att['name']))
+                    ->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings, $useEnums) {
+                        [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables, useEnums: $useEnums);
+                        if (! empty($line)) {
+                            $entry .= $line;
+                            if ($enum) {
+                                $this->enumReflectors[] = $enum;
+                            }
                         }
-                    }
-                });
+                    });
             }
 
             if ($interfaces->isNotEmpty()) {
@@ -117,52 +129,41 @@ class GenerateCliOutput
                 });
             }
 
-            $hiddenAttributes = $noHidden ? $reflectionModel->newInstanceWithoutConstructor()->getHidden() : [];
-            $check_hidden = fn ($name) => $noHidden ? array_search($name, $hiddenAttributes) !== false : false;
-
             if ($relations->isNotEmpty() && ! $noRelations) {
                 $entry .= "{$this->indent}  // relations" . PHP_EOL;
 
-                $relations->each(function ($rel) use ($check_hidden, &$entry, $relationWriter, $optionalRelations, $plurals) {
-                    if ($check_hidden($rel['name'])) {
-                        return;
-                    }
-
-                    $entry .= $relationWriter(relation: $rel, indent: $this->indent, optionalRelation: $optionalRelations, plurals: $plurals);
-                });
+                $relations
+                    ->filter(fn ($rel) => !$should_omit($rel['name']))
+                    ->each(function ($rel) use (&$entry, $relationWriter, $optionalRelations, $plurals) {
+                        $entry .= $relationWriter(relation: $rel, indent: $this->indent, optionalRelation: $optionalRelations, plurals: $plurals);
+                    });
             }
 
             if ($relations->isNotEmpty() && ! $noCounts) {
                 $entry .= "{$this->indent}  // counts" . PHP_EOL;
-                $relations->each(function ($rel) use ($check_hidden, &$entry, $countWriter, $optionalCounts) {
-                    if ($check_hidden($rel['name'])) {
-                        return;
-                    }
-
-                    $entry .= $countWriter(relation: $rel, indent: $this->indent, optionalCounts: $optionalCounts);
-                });
+                $relations
+                    ->filter(fn ($rel) => !$check_hidden($rel['name']))
+                    ->each(function ($rel) use (&$entry, $countWriter, $optionalCounts) {
+                        $entry .= $countWriter(relation: $rel, indent: $this->indent, optionalCounts: $optionalCounts);
+                    });
             }
 
             if ($relations->isNotEmpty() && ! $noExists) {
                 $entry .= "{$this->indent}  // exists" . PHP_EOL;
-                $relations->each(function ($rel) use ($check_hidden, &$entry, $existWriter, $optionalExists) {
-                    if ($check_hidden($rel['name'])) {
-                        return;
-                    }
-
-                    $entry .= $existWriter(relation: $rel, indent: $this->indent, optionalExists: $optionalExists);
-                });
+                $relations
+                    ->filter(fn ($rel) => !$check_hidden($rel['name']))
+                    ->each(function ($rel) use (&$entry, $existWriter, $optionalExists) {
+                        $entry .= $existWriter(relation: $rel, indent: $this->indent, optionalExists: $optionalExists);
+                    });
             }
 
             if ($sums->isNotEmpty() && ! $noSums) {
                 $entry .= "{$this->indent}  // sums" . PHP_EOL;
-                $sums->each(function ($sum) use ($check_hidden, &$entry, $sumWriter, $optionalSums) {
-                    if ($check_hidden($sum['name'])) {
-                        return;
-                    }
-
-                    $entry .= $sumWriter(sum: $sum, indent: $this->indent, optionalSums: $optionalSums);
-                });
+                $sums
+                    ->filter(fn ($sum) => !$check_hidden($sum['name']))
+                    ->each(function ($sum) use (&$entry, $sumWriter, $optionalSums) {
+                        $entry .= $sumWriter(sum: $sum, indent: $this->indent, optionalSums: $optionalSums);
+                    });
             }
 
             $entry .= "{$this->indent}}" . PHP_EOL;

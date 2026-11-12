@@ -1,10 +1,10 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
 use Composer\ClassMapGenerator\ClassMapGenerator;
-use FumeApp\ModelTyper\Traits\ClassBaseName;
-use FumeApp\ModelTyper\Traits\ModelRefClass;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ModelRefClass;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 use ReflectionException;

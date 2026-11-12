@@ -1,10 +1,10 @@
 <?php
 
-namespace FumeApp\ModelTyper;
+namespace Rikthepixel\ModelTyper;
 
-use FumeApp\ModelTyper\Commands\ModelTyperCommand;
-use FumeApp\ModelTyper\Commands\ShowModelTyperMappingsCommand;
-use FumeApp\ModelTyper\Listeners\RunModelTyperCommand;
+use Rikthepixel\ModelTyper\Commands\ModelTyperCommand;
+use Rikthepixel\ModelTyper\Commands\ShowModelTyperMappingsCommand;
+use Rikthepixel\ModelTyper\Listeners\RunModelTyperCommand;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Support\ServiceProvider;

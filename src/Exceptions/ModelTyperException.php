@@ -1,6 +1,6 @@
 <?php
 
-namespace FumeApp\ModelTyper\Exceptions;
+namespace Rikthepixel\ModelTyper\Exceptions;
 
 use Exception;
 

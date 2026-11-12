@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Traits;
+namespace Rikthepixel\ModelTyper\Traits;
 
-use FumeApp\ModelTyper\Actions\RunModelInspector;
+use Rikthepixel\ModelTyper\Actions\RunModelInspector;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionClass;
 

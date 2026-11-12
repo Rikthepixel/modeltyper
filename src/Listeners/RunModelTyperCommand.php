@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Listeners;
+namespace Rikthepixel\ModelTyper\Listeners;
 
-use FumeApp\ModelTyper\Commands\ModelTyperCommand;
+use Rikthepixel\ModelTyper\Commands\ModelTyperCommand;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Contracts\Console\Kernel as Artisan;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace FumeApp\ModelTyper\Actions;
+namespace Rikthepixel\ModelTyper\Actions;
 
-use FumeApp\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
@@ -40,7 +40,6 @@ class WriteColumnAttribute
         }
 
         if (isset($attribute['forceType'])) {
-            $name = $attribute['name'];
             $type = $attribute['type'];
         } else {
             if (! is_null($attribute['cast']) && $attribute['cast'] !== $attribute['type']) {

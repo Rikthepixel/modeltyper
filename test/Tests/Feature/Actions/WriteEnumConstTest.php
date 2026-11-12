@@ -3,7 +3,7 @@
 namespace Tests\Feature\Actions;
 
 use App\Enums\Roles;
-use FumeApp\ModelTyper\Actions\WriteEnumConst;
+use Rikthepixel\ModelTyper\Actions\WriteEnumConst;
 use Tests\TestCase;
 use Tests\Traits\GeneratesOutput;
 use Tests\Traits\ResolveClassAsReflection;

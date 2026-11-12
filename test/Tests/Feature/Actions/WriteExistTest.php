@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\WriteExist;
+use Rikthepixel\ModelTyper\Actions\WriteExist;
 use Tests\TestCase;
 
 class WriteExistTest extends TestCase

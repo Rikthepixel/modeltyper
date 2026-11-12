@@ -3,7 +3,7 @@
 namespace Tests\Feature\Actions;
 
 use App\Models\User;
-use FumeApp\ModelTyper\Actions\WriteColumnAttribute;
+use Rikthepixel\ModelTyper\Actions\WriteColumnAttribute;
 use ReflectionClass;
 use Tests\TestCase;
 

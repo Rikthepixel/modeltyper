@@ -75,7 +75,7 @@
         {
             "DatabaseNotification[]": {
                 "name": "notifications",
-                "type": "export type DatabaseNotification[] = Array<User>"
+                "type": "export type DatabaseNotification[] = User[]"
             }
         }
     ],

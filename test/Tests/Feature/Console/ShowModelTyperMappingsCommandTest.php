@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Console;
 
-use FumeApp\ModelTyper\Commands\ShowModelTyperMappingsCommand;
-use FumeApp\ModelTyper\Constants\TypescriptMappings;
+use Rikthepixel\ModelTyper\Commands\ShowModelTyperMappingsCommand;
+use Rikthepixel\ModelTyper\Constants\TypescriptMappings;
 use Tests\TestCase;
 
 class ShowModelTyperMappingsCommandTest extends TestCase

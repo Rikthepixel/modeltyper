@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Actions;
 
-use FumeApp\ModelTyper\Actions\WriteCount;
-use FumeApp\ModelTyper\Actions\WriteExist;
-use FumeApp\ModelTyper\Actions\WriteRelationship;
+use Rikthepixel\ModelTyper\Actions\WriteCount;
+use Rikthepixel\ModelTyper\Actions\WriteExist;
+use Rikthepixel\ModelTyper\Actions\WriteRelationship;
 use Tests\TestCase;
 
 class WriteRelationshipTest extends TestCase
