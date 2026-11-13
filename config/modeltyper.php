@@ -73,31 +73,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Use TypeScript Enums Instead of Object Literals
-    |--------------------------------------------------------------------------
-    |
-    | Determines whether to use TypeScript enums instead of object literals for
-    | representing certain data structures. Enums provide a more type-safe and
-    | expressive way to define sets of related constants.
-    */
-    'use-enums' => false,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Emit Plain TypeScript Enums Instead of Const Enums
-    |--------------------------------------------------------------------------
-    |
-    | Determines whether enums emitted by use-enums use the plain "enum" syntax
-    | instead of "const enum". Const enum members are inlined by the TypeScript
-    | compiler and are not accessible at runtime; plain enums produce a real
-    | object, so their values can be read at runtime.
-    |
-    | Requires use-enums set to true
-    */
-    'plain-enums' => false,
-
-    /*
-    |--------------------------------------------------------------------------
     | Use TypeScript Types Instead of Interfaces
     |--------------------------------------------------------------------------
     |

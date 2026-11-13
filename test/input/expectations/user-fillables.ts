@@ -25,7 +25,7 @@ export interface User {
 }
 export type UserEditable = Pick<User, 'name' | 'email' | 'password' | 'role_traditional' | 'role_new'>
 
-const Roles = {
+export const Roles = {
   /** Can do anything */
   ADMIN: 'admin',
   /** Standard readonly */

@@ -25,7 +25,7 @@ class WriteColumnAttribute
      * @param  array<string, string>  $mappings
      * @return array{array{name: string, type: string}, ReflectionClass|null}|array{string, ReflectionClass|null}|array{null, null}
      */
-    public function __invoke(ReflectionClass $reflectionModel, array $attribute, array $mappings, string $indent = '', bool $jsonOutput = false, bool $noHidden = false, bool $optionalNullables = false, bool $useEnums = false): array
+    public function __invoke(ReflectionClass $reflectionModel, array $attribute, array $mappings, string $indent = '', bool $jsonOutput = false, bool $noHidden = false, bool $optionalNullables = false): array
     {
         $enumRef = null;
         $returnType = app(MapReturnType::class);
@@ -173,8 +173,16 @@ class WriteColumnAttribute
             }
         }
 
-        if ($useEnums) {
-            $type = $enumRef && $type ? ($type . 'Enum') : $type;
+        // if ($useEnums) {
+        //     $type = $enumRef && $type ? ($type . 'Enum') : $type;
+        // }
+
+        if ($requiredTimestamps && (
+            $reflectionModel->newInstance()->getCreatedAtColumn() === $attribute['name'] ||
+            $reflectionModel->newInstance()->getUpdatedAtColumn() === $attribute['name']
+        )) {
+            $attribute['nullable'] = false;
+            $attribute['optional'] = false;
         }
 
         if ($requiredTimestamps && (

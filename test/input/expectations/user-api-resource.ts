@@ -27,7 +27,7 @@ export interface UserResult extends api.MetApiResults { data: User }
 export interface UserMetApiData extends api.MetApiData { data: User }
 export interface UserResponse extends api.MetApiResponse { data: UserMetApiData }
 
-const Roles = {
+export const Roles = {
   /** Can do anything */
   ADMIN: 'admin',
   /** Standard readonly */

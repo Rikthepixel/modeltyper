@@ -11,7 +11,7 @@ class WriteEnumConst
      *
      * @return array{type: string, name: string}|string
      */
-    public function __invoke(ReflectionClass $reflection, string $indent = '', bool $jsonOutput = false, bool $useEnums = false, bool $plainEnums = false): array|string
+    public function __invoke(ReflectionClass $reflection, string $indent = '', bool $jsonOutput = false, bool $global = false): array|string
     {
         $entry = '';
 
@@ -29,14 +29,10 @@ class WriteEnumConst
             ->filter(fn ($case) => $case instanceof \BackedEnum);
 
         if ($cases->isNotEmpty()) {
-            if ($useEnums) {
-                $enumKeyword = $plainEnums ? 'enum' : 'const enum';
-                $entry .= "{$indent}export {$enumKeyword} {$reflection->getShortName()} {" . PHP_EOL;
-            } else {
-                $entry .= "{$indent}const {$reflection->getShortName()} = {" . PHP_EOL;
-            }
+            $assignmentSign = $global ? ': ' : ' = ';
+            $entry .= "{$indent}export const {$reflection->getShortName()}{$assignmentSign}{" . PHP_EOL;
 
-            $cases->each(function ($case) use ($indent, &$entry, $comments, $useEnums) {
+            $cases->each(function ($case) use ($global, $indent, &$entry, $comments) {
                 $name = $case->name;
                 $value = is_string($case->value) ? "'" . addslashes($case->value) . "'" : $case->value;
 
@@ -53,19 +49,14 @@ class WriteEnumConst
                     }
                 }
 
-                if ($useEnums) {
-                    $entry .= "{$indent}  {$name} = {$value}," . PHP_EOL;
-                } else {
-                    $entry .= "{$indent}  {$name}: {$value}," . PHP_EOL;
-                }
+                $entry .= "{$indent}  {$name}: {$value}," . PHP_EOL;
             });
 
-            if ($useEnums) {
-                $entry .= "{$indent}}" . PHP_EOL . PHP_EOL;
-                $entry .= "{$indent}export type {$reflection->getShortName()}Enum = `\${{$reflection->getShortName()}}`" . PHP_EOL . PHP_EOL;
-            } else {
-                $entry .= "{$indent}} as const;" . PHP_EOL . PHP_EOL;
-                $entry .= "{$indent}export type {$reflection->getShortName()} = typeof {$reflection->getShortName()}[keyof typeof {$reflection->getShortName()}]" . PHP_EOL . PHP_EOL;
+            $as_const = $global ? "" : " as const" ;
+            $entry .= "{$indent}}{$as_const};" . PHP_EOL;
+
+            if (!$global) {
+                $entry .= PHP_EOL . "{$indent}export type {$reflection->getShortName()} = typeof {$reflection->getShortName()}[keyof typeof {$reflection->getShortName()}]" . PHP_EOL . PHP_EOL;
             }
         }
 

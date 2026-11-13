@@ -25,7 +25,7 @@ export interface User {
 }
 export type Users = User[]
 
-const Roles = {
+export const Roles = {
   /** Can do anything */
   ADMIN: 'admin',
   /** Standard readonly */

@@ -24,7 +24,7 @@ export type User = {
   notifications_exists: boolean
 }
 
-const Roles = {
+export const Roles = {
   /** Can do anything */
   ADMIN: 'admin',
   /** Standard readonly */

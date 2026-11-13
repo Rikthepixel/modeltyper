@@ -87,33 +87,11 @@ class ModelTyperCommandTest extends TestCase
             'output-file' => './test/output/user.json',
             '--model' => User::class,
             '--json' => true,
-            '--use-enums' => true,
         ])->expectsOutput('Typescript interfaces generated in ./test/output/user.json file');
 
         $actual = $this->getGeneratedFileContents('user.json');
 
         $this->assertSame($expected, $actual);
-    }
-
-    public function test_command_generates_use_enums_when_option_is_enabled()
-    {
-        $expected = $this->getExpectedContent('user-enums.ts');
-
-        $this->artisan(ModelTyperCommand::class, [
-            '--model' => User::class,
-            '--use-enums' => true,
-        ])->expectsOutput($expected);
-    }
-
-    public function test_command_generates_plain_enums_when_option_is_enabled()
-    {
-        $expected = $this->getExpectedContent('user-plain-enums.ts');
-
-        $this->artisan(ModelTyperCommand::class, [
-            '--model' => User::class,
-            '--use-enums' => true,
-            '--plain-enums' => true,
-        ])->expectsOutput($expected);
     }
 
     public function test_command_generates_plurals_when_option_is_enabled()

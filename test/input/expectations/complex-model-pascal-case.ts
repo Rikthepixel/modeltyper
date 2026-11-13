@@ -44,7 +44,7 @@ export interface Complex {
   ComplexRelationshipsExists: boolean
 }
 
-const Roles = {
+export const Roles = {
   /** Can do anything */
   ADMIN: 'admin',
   /** Standard readonly */

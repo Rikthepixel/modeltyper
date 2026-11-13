@@ -37,7 +37,7 @@ class GenerateCliOutput
      *
      * @throws \ReflectionException
      */
-    public function __invoke(Collection $models, array $mappings, bool $global = false, bool $useEnums = false, bool $plainEnums = false, bool $useTypes = false, bool $plurals = false, bool $apiResources = false, bool $optionalRelations = false, bool $noRelations = false, bool $noHidden = false, bool $noCounts = false, bool $optionalCounts = false, bool $noExists = false, bool $optionalExists = false, bool $noSums = false, bool $optionalSums = false, bool $optionalNullables = false, bool $fillables = false, string $fillableSuffix = 'Fillable'): string
+    public function __invoke(Collection $models, array $mappings, bool $global = false, bool $useTypes = false, bool $plurals = false, bool $apiResources = false, bool $optionalRelations = false, bool $noRelations = false, bool $noHidden = false, bool $noCounts = false, bool $optionalCounts = false, bool $noExists = false, bool $optionalExists = false, bool $noSums = false, bool $optionalSums = false, bool $optionalNullables = false, bool $fillables = false, string $fillableSuffix = 'Fillable'): string
     {
         $modelBuilder = app(BuildModelDetails::class);
         $colAttrWriter = app(WriteColumnAttribute::class);
@@ -53,7 +53,7 @@ class GenerateCliOutput
             $this->indent = '    ';
         }
 
-        $models->each(function (SplFileInfo $model) use ($fillableWriter, $mappings, $modelBuilder, $colAttrWriter, $relationWriter, $countWriter, $existWriter, $sumWriter, $plurals, $apiResources, $optionalRelations, $noRelations, $noHidden, $noCounts, $optionalCounts, $noExists, $optionalExists, $noSums, $optionalSums, $optionalNullables, $fillables, $fillableSuffix, $useEnums, $useTypes) {
+        $models->each(function (SplFileInfo $model) use ($fillableWriter, $mappings, $modelBuilder, $colAttrWriter, $relationWriter, $countWriter, $existWriter, $sumWriter, $plurals, $apiResources, $optionalRelations, $noRelations, $noHidden, $noCounts, $optionalCounts, $noExists, $optionalExists, $noSums, $optionalSums, $optionalNullables, $fillables, $fillableSuffix, $useTypes) {
             $entry = '';
             $modelDetails = $modelBuilder(
                 modelFile: $model,
@@ -94,8 +94,8 @@ class GenerateCliOutput
                 $entry .= "{$this->indent}  // columns" . PHP_EOL;
                 $columns
                     ->filter(fn ($att) => ! $check_overridden($att['name']))
-                    ->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings, $useEnums) {
-                        [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables, useEnums: $useEnums);
+                    ->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings) {
+                        [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables);
 
                         if (! empty($line)) {
                             $entry .= $line;
@@ -110,8 +110,8 @@ class GenerateCliOutput
                 $entry .= "{$this->indent}  // mutators" . PHP_EOL;
                 $nonColumns
                     ->filter(fn ($att) => ! $check_overridden($att['name']))
-                    ->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings, $useEnums) {
-                        [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables, useEnums: $useEnums);
+                    ->each(function ($att) use (&$entry, $reflectionModel, $colAttrWriter, $noHidden, $optionalNullables, $mappings) {
+                        [$line, $enum] = $colAttrWriter(reflectionModel: $reflectionModel, attribute: $att, mappings: $mappings, indent: $this->indent, noHidden: $noHidden, optionalNullables: $optionalNullables);
                         if (! empty($line)) {
                             $entry .= $line;
                             if ($enum) {
@@ -201,8 +201,8 @@ class GenerateCliOutput
 
         collect($this->enumReflectors)
             ->unique(fn (ReflectionClass $reflector) => $reflector->getName())
-            ->each(function (ReflectionClass $reflector) use ($useEnums, $plainEnums) {
-                $this->output .= app(WriteEnumConst::class)($reflector, $this->indent, false, $useEnums, $plainEnums);
+            ->each(function (ReflectionClass $reflector) use ($global) {
+                $this->output .= app(WriteEnumConst::class)($reflector, $this->indent, false, $global);
             });
 
         collect($this->imports)
