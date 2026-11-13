@@ -2,8 +2,8 @@
 
 namespace Rikthepixel\ModelTyper\Actions;
 
-use Rikthepixel\ModelTyper\Constants\TypescriptMappings;
 use Illuminate\Support\Facades\Config;
+use Rikthepixel\ModelTyper\Constants\TypescriptMappings;
 
 class GetMappings
 {

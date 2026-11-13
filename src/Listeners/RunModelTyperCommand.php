@@ -2,9 +2,9 @@
 
 namespace Rikthepixel\ModelTyper\Listeners;
 
-use Rikthepixel\ModelTyper\Commands\ModelTyperCommand;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Contracts\Console\Kernel as Artisan;
+use Rikthepixel\ModelTyper\Commands\ModelTyperCommand;
 
 class RunModelTyperCommand
 {

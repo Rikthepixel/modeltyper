@@ -3,8 +3,8 @@
 namespace Tests\Feature\Actions;
 
 use App\Models\User;
-use Rikthepixel\ModelTyper\Actions\WriteColumnAttribute;
 use ReflectionClass;
+use Rikthepixel\ModelTyper\Actions\WriteColumnAttribute;
 use Tests\TestCase;
 
 class WriteColumnAttributeTest extends TestCase

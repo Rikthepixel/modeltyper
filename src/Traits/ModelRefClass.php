@@ -2,9 +2,9 @@
 
 namespace Rikthepixel\ModelTyper\Traits;
 
-use Rikthepixel\ModelTyper\Actions\RunModelInspector;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionClass;
+use Rikthepixel\ModelTyper\Actions\RunModelInspector;
 
 /**
  * @phpstan-import-type ModelInspectorResult from RunModelInspector

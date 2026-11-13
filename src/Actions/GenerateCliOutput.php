@@ -88,7 +88,7 @@ class GenerateCliOutput
             $check_hidden = fn ($name) => $noHidden ? array_search($name, $hiddenAttributes) !== false : false;
             $check_overridden = fn ($name) => $interfaces->has($name);
 
-            $should_omit = fn($name) => $check_hidden($name) || $check_overridden($name);
+            $should_omit = fn ($name) => $check_hidden($name) || $check_overridden($name);
 
             if ($columns->isNotEmpty()) {
                 $entry .= "{$this->indent}  // columns" . PHP_EOL;
@@ -133,7 +133,7 @@ class GenerateCliOutput
                 $entry .= "{$this->indent}  // relations" . PHP_EOL;
 
                 $relations
-                    ->filter(fn ($rel) => !$should_omit($rel['name']))
+                    ->filter(fn ($rel) => ! $should_omit($rel['name']))
                     ->each(function ($rel) use (&$entry, $relationWriter, $optionalRelations, $plurals) {
                         $entry .= $relationWriter(relation: $rel, indent: $this->indent, optionalRelation: $optionalRelations, plurals: $plurals);
                     });
@@ -142,7 +142,7 @@ class GenerateCliOutput
             if ($relations->isNotEmpty() && ! $noCounts) {
                 $entry .= "{$this->indent}  // counts" . PHP_EOL;
                 $relations
-                    ->filter(fn ($rel) => !$check_hidden($rel['name']))
+                    ->filter(fn ($rel) => ! $check_hidden($rel['name']))
                     ->each(function ($rel) use (&$entry, $countWriter, $optionalCounts) {
                         $entry .= $countWriter(relation: $rel, indent: $this->indent, optionalCounts: $optionalCounts);
                     });
@@ -151,7 +151,7 @@ class GenerateCliOutput
             if ($relations->isNotEmpty() && ! $noExists) {
                 $entry .= "{$this->indent}  // exists" . PHP_EOL;
                 $relations
-                    ->filter(fn ($rel) => !$check_hidden($rel['name']))
+                    ->filter(fn ($rel) => ! $check_hidden($rel['name']))
                     ->each(function ($rel) use (&$entry, $existWriter, $optionalExists) {
                         $entry .= $existWriter(relation: $rel, indent: $this->indent, optionalExists: $optionalExists);
                     });
@@ -160,7 +160,7 @@ class GenerateCliOutput
             if ($sums->isNotEmpty() && ! $noSums) {
                 $entry .= "{$this->indent}  // sums" . PHP_EOL;
                 $sums
-                    ->filter(fn ($sum) => !$check_hidden($sum['name']))
+                    ->filter(fn ($sum) => ! $check_hidden($sum['name']))
                     ->each(function ($sum) use (&$entry, $sumWriter, $optionalSums) {
                         $entry .= $sumWriter(sum: $sum, indent: $this->indent, optionalSums: $optionalSums);
                     });

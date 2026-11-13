@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use Rikthepixel\ModelTyper\ModelTyperServiceProvider;
 use Illuminate\Config\Repository;
+use Rikthepixel\ModelTyper\ModelTyperServiceProvider;
 
 use function Orchestra\Testbench\package_path;
 use function Orchestra\Testbench\workbench_path;

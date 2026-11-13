@@ -2,9 +2,9 @@
 
 namespace Rikthepixel\ModelTyper\Commands;
 
-use Rikthepixel\ModelTyper\Actions\GetMappings;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'model:typer-mappings')]

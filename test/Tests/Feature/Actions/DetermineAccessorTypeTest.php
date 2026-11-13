@@ -4,9 +4,9 @@ namespace Tests\Feature\Actions;
 
 use App\Models\User;
 use Exception;
-use Rikthepixel\ModelTyper\Actions\DetermineAccessorType;
 use ReflectionClass;
 use ReflectionMethod;
+use Rikthepixel\ModelTyper\Actions\DetermineAccessorType;
 use Tests\TestCase;
 use Tests\Traits\ResolveClassAsReflection;
 

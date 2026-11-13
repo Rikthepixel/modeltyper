@@ -4,12 +4,12 @@ namespace Rikthepixel\ModelTyper\Actions;
 
 use const JSON_PRETTY_PRINT;
 
-use Rikthepixel\ModelTyper\Traits\ClassBaseName;
-use Rikthepixel\ModelTyper\Traits\ModelRefClass;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use ReflectionClass;
 use ReflectionException;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
+use Rikthepixel\ModelTyper\Traits\ModelRefClass;
 use SplFileInfo;
 
 class GenerateJsonOutput
@@ -106,7 +106,6 @@ class GenerateJsonOutput
                     $this->output['interfaces'][$name][] = $sumConst;
                 });
             }
-
 
             $this->output['relations'] = $relations->map(function ($rel) use ($relationWriter, $name) {
                 $relation = $relationWriter(relation: $rel, jsonOutput: true);

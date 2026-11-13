@@ -2,12 +2,12 @@
 
 namespace Rikthepixel\ModelTyper;
 
-use Rikthepixel\ModelTyper\Commands\ModelTyperCommand;
-use Rikthepixel\ModelTyper\Commands\ShowModelTyperMappingsCommand;
-use Rikthepixel\ModelTyper\Listeners\RunModelTyperCommand;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Support\ServiceProvider;
+use Rikthepixel\ModelTyper\Commands\ModelTyperCommand;
+use Rikthepixel\ModelTyper\Commands\ShowModelTyperMappingsCommand;
+use Rikthepixel\ModelTyper\Listeners\RunModelTyperCommand;
 
 class ModelTyperServiceProvider extends ServiceProvider
 {

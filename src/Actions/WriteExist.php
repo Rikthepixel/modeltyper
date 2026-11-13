@@ -2,8 +2,8 @@
 
 namespace Rikthepixel\ModelTyper\Actions;
 
-use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 use Illuminate\Support\Facades\Config;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 
 class WriteExist
 {

@@ -2,7 +2,6 @@
 
 namespace Rikthepixel\ModelTyper\Actions;
 
-use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
@@ -12,6 +11,7 @@ use ReflectionException;
 use ReflectionFunction;
 use ReflectionNamedType;
 use ReflectionUnionType;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 
 class WriteColumnAttribute
 {
@@ -31,6 +31,7 @@ class WriteColumnAttribute
         $returnType = app(MapReturnType::class);
 
         $case = Config::get('modeltyper.case.columns', 'snake');
+        $requiredTimestamps = $reflectionModel->newInstance()->usesTimestamps() && Config::get('modeltyper.required_timestamps', false);
         $name = app(MatchCase::class)($case, $attribute['name']);
 
         $type = 'unknown';
@@ -174,6 +175,14 @@ class WriteColumnAttribute
 
         if ($useEnums) {
             $type = $enumRef && $type ? ($type . 'Enum') : $type;
+        }
+
+        if ($requiredTimestamps && (
+            $reflectionModel->newInstance()->getCreatedAtColumn() === $attribute['name'] ||
+            $reflectionModel->newInstance()->getUpdatedAtColumn() === $attribute['name']
+        )) {
+            $attribute['nullable'] = false;
+            $attribute['optional'] = false;
         }
 
         if ($attribute['nullable']) {

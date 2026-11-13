@@ -5,9 +5,9 @@ namespace Tests\Feature\Actions;
 use App\Models\AbstractModel;
 use App\Models\User;
 use App\Modules\Models\Team;
+use Illuminate\Support\Facades\Config;
 use Rikthepixel\ModelTyper\Actions\Generator;
 use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class GeneratorTest extends TestCase

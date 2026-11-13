@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Overrides;
 
-use Rikthepixel\ModelTyper\Overrides\ModelInspector;
 use Illuminate\Support\Facades\Config;
 use ReflectionClass;
+use Rikthepixel\ModelTyper\Overrides\ModelInspector;
 use Tests\TestCase;
 
 class ModelInspectorTest extends TestCase

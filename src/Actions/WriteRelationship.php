@@ -2,10 +2,10 @@
 
 namespace Rikthepixel\ModelTyper\Actions;
 
-use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Rikthepixel\ModelTyper\Traits\ClassBaseName;
 
 class WriteRelationship
 {

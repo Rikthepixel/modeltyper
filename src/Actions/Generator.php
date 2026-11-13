@@ -2,10 +2,10 @@
 
 namespace Rikthepixel\ModelTyper\Actions;
 
-use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use ReflectionException;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use SplFileInfo;
 
 /**

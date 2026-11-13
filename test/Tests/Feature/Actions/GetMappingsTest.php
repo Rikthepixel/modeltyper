@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Actions;
 
-use Rikthepixel\ModelTyper\Actions\GetMappings;
 use Illuminate\Support\Facades\Config;
+use Rikthepixel\ModelTyper\Actions\GetMappings;
 use Tests\TestCase;
 
 class GetMappingsTest extends TestCase

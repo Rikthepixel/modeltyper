@@ -2,12 +2,12 @@
 
 namespace Rikthepixel\ModelTyper\Commands;
 
-use Rikthepixel\ModelTyper\Actions\Generator;
-use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
 use ReflectionException;
+use Rikthepixel\ModelTyper\Actions\Generator;
+use Rikthepixel\ModelTyper\Exceptions\ModelTyperException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 

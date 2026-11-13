@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Actions;
 
-use Rikthepixel\ModelTyper\Actions\WriteFillable;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionClass;
+use Rikthepixel\ModelTyper\Actions\WriteFillable;
 use Tests\TestCase;
 
 class TestModel extends Model
